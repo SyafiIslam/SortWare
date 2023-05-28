@@ -1,3 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  .h1 {
+    @apply md:text-[53px]
+  }
+
+  .h2 {
+    @apply md:text-[43px]
+  }
+
+  .h3 {
+    @apply md:text-[34px]
+  }
+
+  .h4 {
+    @apply md:text[27px]
+  }
+
+  .h5 {
+    @apply md:text-[22px]
+  }
+
+  .h6 {
+    @apply md:text-[18px]
+  }
+
+  .p1 {
+    @apply md:text-[14px]
+  }
+
+  .p2 {
+    @apply md:text-[11px]
+  }
+
+  .p3 {
+    @apply md:text-[9px]
+  }
+}
