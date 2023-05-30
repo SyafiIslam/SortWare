@@ -2,7 +2,7 @@ import Trash from "../../assets/trash.svg";
 
 export const Button = ({ children = "Button" }) => {
   return (
-    <button className="bg-primary800 rounded-xl text-white px-4 py-2 font-semibold w-full hover:shadow-lg duration-300 hover:-translate-y-[2px]">
+    <button className="bg-primary800 rounded-3xl text-white px-4 py-6 font-semibold w-full hover:shadow-lg duration-300 hover:-translate-y-[2px]">
       {children}
     </button>
   );
