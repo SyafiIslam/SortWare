@@ -1,8 +1,13 @@
 import Trash from "../../assets/trash.svg";
 
-export const Button = ({ children = "Button" }) => {
+export const Button = ({ 
+  children = "Button",
+  onClick
+}) => {
   return (
-    <button className="bg-primary800 rounded-3xl text-white px-4 py-6 font-semibold w-full hover:shadow-lg duration-300 hover:-translate-y-[2px]">
+    <button className="bg-primary800 rounded-3xl text-[18px] text-white px-4 py-6 font-semibold w-full hover:shadow-lg duration-300 hover:-translate-y-[2px]"
+    onClick={onClick}
+    >
       {children}
     </button>
   );
