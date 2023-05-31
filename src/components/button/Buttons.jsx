@@ -21,9 +21,9 @@ export const OutlinedButton = ({ children = "Button" }) => {
   );
 };
 
-export const NavButton = ({ children = "Button" }) => {
+export const NavButton = ({ children = "Button", onClick }) => {
   return (
-    <button className="border-2 border-shade50 text-white bg-primary700 rounded-xl px-8 py-2 font-semibold hover:shadow-lg duration-300 hover:-translate-y-[2px]">
+    <button onClick={onClick} className="border-2 border-shade50 text-white bg-primary700 rounded-xl px-8 py-2 font-semibold hover:bg-primary800 duration-300">
       {children}
     </button>
   );

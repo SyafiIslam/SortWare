@@ -1,7 +1,7 @@
 export const Input = ({
   type= 'text',
   placeholder,
-  onChange
+  onChange,
 }) => {
   return (
     <input

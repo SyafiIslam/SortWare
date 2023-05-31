@@ -2,7 +2,7 @@ import { Button, DeleteButton } from "../button/Buttons";
 
 export const CrudCard = ({ img, title, text }) => {
   return (
-    <div className="max-w-[400px] flex flex-col rounded-2xl shadow-xl p-8 items-center text-center gap-3">
+    <div className="max-w-[400px] flex flex-col rounded-2xl shadow-xl p-8 items-center text-center gap-3 bg-white">
       <img className="max-w-52 max-h-52" src={img} alt="" />
       <p className="h4 font-semibold">{title}</p>
       <p className="text-[18px]">{text}</p>

@@ -10,8 +10,15 @@ export const LoginHandler = (username, password, setMsg) => {
       .then((res) => {
         setMsg('Login Successfull')
         window.localStorage.setItem('token', res.user.accessToken)
-      }).catch((err) => {
+        window.location.reload()
+      })
+      .catch((err) => {
         setMsg('Username or Password invalid')
-      });
+      })
   }
+};
+
+export const removeToken = () => {
+  window.localStorage.removeItem('token')
+  window.location.reload()
 };
