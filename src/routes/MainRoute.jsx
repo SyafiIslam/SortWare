@@ -1,15 +1,35 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import LoginPage from '../page/login/LoginPage'
+import React, { useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+import LoginPage from "../page/login/LoginPage";
+import AuthRoute from "./AuthRoute";
+import ProtectedRoute from "./ProtectedRoute";
+import HomePage from "../page/home/HomePage";
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 const MainRoute = () => {
   return (
     <div>
+      <ScrollToTop />
       <Routes>
-      <Route path="/" element={<LoginPage />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/" element={<HomePage />} />
+        </Route>
+
+        <Route element={<AuthRoute />}>
+          <Route path="/login" element={<LoginPage />} />
+        </Route>
       </Routes>
     </div>
-  )
-}
+  );
+};
 
-export default MainRoute
+export default MainRoute;
