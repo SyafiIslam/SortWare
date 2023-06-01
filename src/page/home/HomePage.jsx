@@ -1,15 +1,16 @@
 import React from "react";
-import Weblayout from "../../components/layout/Weblayout";
 import LandingImage from "../../assets/home_image.svg";
 import Create from "../../assets/create.svg";
 import Update from "../../assets/update.svg";
 import Delete from "../../assets/delete.svg";
 import { Button } from "../../components/button/Buttons";
 import { CrudCard } from "../../components/card/Card";
+import Navbar from "../../components/layout/Navbar";
 
 const HomePage = () => {
   return (
-    <Weblayout>
+    <div>
+      <Navbar />
       <div className="py-28 px-28">
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-3">
@@ -58,7 +59,7 @@ const HomePage = () => {
           />
         </div>
       </div>
-    </Weblayout>
+    </div>
   );
 };
 

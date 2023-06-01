@@ -13,8 +13,8 @@ const Navbar = () => {
       </Link>
 
       <div className='flex gap-8 h6 items-center'>
-        <p className='font-[500] hover:font-bold text-white duration-300'>Beranda</p>
-        <p className='font-[500] hover:font-bold text-white duration-300'>Barang</p>
+        <Link className='font-[500] hover:font-bold text-white duration-300'>Beranda</Link>
+        <Link className='font-[500] hover:font-bold text-white duration-300'>Barang</Link>
         <NavButton onClick={() => {removeToken()}}>
           Log Out
         </NavButton>

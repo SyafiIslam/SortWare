@@ -4,6 +4,7 @@ import LoginPage from "../page/login/LoginPage";
 import AuthRoute from "./AuthRoute";
 import ProtectedRoute from "./ProtectedRoute";
 import HomePage from "../page/home/HomePage";
+import BarangPage from "../page/barang/BarangPage";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -22,6 +23,7 @@ const MainRoute = () => {
       <Routes>
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/barang" element={<BarangPage />} />
         </Route>
 
         <Route element={<AuthRoute />}>

@@ -12,14 +12,16 @@ export const CrudCard = ({ img, title, text }) => {
 
 export const BarangCard = ({ img, id, name }) => {
   return (
-    <div>
+    <div key={id}>
       <img src={img} alt="" />
       <div className="max-w-[300px] flex flex-col rounded-2xl shadow-xl p-4">
         <p className="text-[14px] font-semibold text-neutral-500">{id}</p>
         <p className="font-bold text-[22px]">{name}</p>
         <div className="flex items-center justify-center w-full gap-2 mt-7">
           <div className="basis-5/6">
-            <Button>Detail</Button>
+            <button className="bg-primary800 rounded-3xl text-[18px] text-white px-4 py-2 font-semibold w-full hover:shadow-lg duration-300 hover:-translate-y-[2px]">
+                Detail
+            </button>
           </div>
           <div className="basis-1/6">
             <DeleteButton />
