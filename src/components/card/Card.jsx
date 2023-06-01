@@ -19,11 +19,11 @@ export const BarangCard = ({ img, id, name }) => {
         <p className="font-bold text-[22px]">{name}</p>
         <div className="flex items-center justify-center w-full gap-2 mt-7">
           <div className="basis-5/6">
-            <button className="bg-primary800 rounded-3xl text-[18px] text-white px-4 py-2 font-semibold w-full hover:shadow-lg duration-300 hover:-translate-y-[2px]">
+            <button className="bg-primary800 rounded-xl text-[18px] text-white px-4 py-2 font-semibold w-full hover:shadow-lg duration-300 hover:-translate-y-[2px]">
                 Detail
             </button>
           </div>
-          <div className="basis-1/6">
+          <div className="basis-1/6 h-full">
             <DeleteButton />
           </div>
         </div>

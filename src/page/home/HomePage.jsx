@@ -6,6 +6,8 @@ import Delete from "../../assets/delete.svg";
 import { Button } from "../../components/button/Buttons";
 import { CrudCard } from "../../components/card/Card";
 import Navbar from "../../components/layout/Navbar";
+import { Link } from "react-router-dom";
+import { HapusPopup, LaporanPopup, SuccessPopup } from "../../components/popup/Popup";
 
 const HomePage = () => {
   return (
@@ -20,9 +22,9 @@ const HomePage = () => {
               dalam menyortir dan mengudentifikasi barang agar sesuai standar
               dan SOP gudang.
             </p>
-            <div className="w-1/3">
+            <Link to='/barang' className="w-1/3">
               <Button>Sorting Sekarang</Button>
-            </div>
+            </Link>
           </div>
 
           <div className="">
@@ -59,6 +61,7 @@ const HomePage = () => {
           />
         </div>
       </div>
+      <SuccessPopup />
     </div>
   );
 };

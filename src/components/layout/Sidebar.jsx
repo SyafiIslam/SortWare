@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Icon from "../../assets/icon.svg";
 import Barang from "../../assets/barang.svg";
 import Notif from "../../assets/notif.svg";
 import Beranda from "../../assets/beranda.svg";
 import Logout from "../../assets/logout.svg";
 import { Link } from "react-router-dom";
+import { removeToken } from "../../api/Api";
 
 const Sidebar = () => {
+
+  const [loc, setLoc]= useState('barang')
+
+  useEffect(() => {
+    setLoc('barang')
+  }, [])
+
   return (
-    <div className="max-w-[516px] bg-primary800 z-50 py-14 px-14 -mt-44 sticky">
+    <div className="w-[516px] bg-primary800 z-50 py-14 px-16 -mt-44">
       <div className="sticky top-14">
         <div className="flex gap-2 items-center">
           <img src={Icon} alt="" />
@@ -17,7 +25,7 @@ const Sidebar = () => {
 
         <div className="flex flex-col mt-20 gap-5">
           <Link to="/">
-            <figure className="flex items-center justify-start gap-2 h-fit py-4 px-4 rounded-xl hover:bg-primary700 duration-300">
+            <figure className="flex items-center px-4 justify-start gap-2 h-fit py-4  rounded-xl hover:bg-primary700 duration-300">
               <img src={Beranda} alt="" />
               <figcaption className="h6 font-semibold text-white">
                 Beranda
@@ -25,8 +33,8 @@ const Sidebar = () => {
             </figure>
           </Link>
 
-          <Link>
-            <figure className="flex items-center gap-2 py-4 px-4 rounded-xl h-fit hover:bg-primary700 duration-300">
+          <Link onClick={() => {setLoc('barang')}}>
+            <figure className={`flex items-center px-4 gap-2 py-4 rounded-xl h-fit hover:bg-primary700 ${loc === 'barang' && 'bg-primary700'} duration-300`}>
               <img src={Barang} alt="" />
               <figcaption className="h6 font-semibold text-white">
                 Barang
@@ -34,8 +42,8 @@ const Sidebar = () => {
             </figure>
           </Link>
 
-          <Link>
-            <figure className="flex items-center -ml-1 gap-2 py-4 px-4 rounded-xl h-fit hover:bg-primary700 duration-300">
+          <Link onClick={() => {setLoc('laporan')}} >
+            <figure className={`flex items-center px-4 -ml-1 gap-2 py-4 rounded-xl h-fit hover:bg-primary700 ${loc === 'laporan' && 'bg-primary700'} duration-300`}>
               <img src={Notif} alt="" />
               <figcaption className="h6 font-semibold text-white">
                 Pelaporan Barang
@@ -43,8 +51,8 @@ const Sidebar = () => {
             </figure>
           </Link>
 
-          <Link>
-            <figure className="flex items-center gap-2 py-4 px-4 rounded-xl h-fitd-xl hover:bg-err300 duration-300">
+          <Link onClick={() => {removeToken()}} >
+            <figure className="flex items-center px-4 gap-2 py-4 rounded-xl h-fitd-xl hover:bg-err300 duration-300 -ml-1">
               <img src={Logout} alt="" />
               <figcaption className="h6 font-semibold text-white">
                 Logout
