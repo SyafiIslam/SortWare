@@ -12,7 +12,7 @@ export const Input = ({
     <div className="relative">
       <input
         required
-        className="border-2 border-primary900 rounded-xl text-[18px] font-[500] text-neutral-900 px-12 py-4 w-full"
+        className="border-2 border-primary900 rounded-xl text-[18px] outline-none font-[500] text-neutral-900 px-12 py-4 w-full"
         type={type}
         onChange={onChange}
         placeholder={placeholder}

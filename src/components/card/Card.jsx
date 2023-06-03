@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button, DeleteButton } from "../button/Buttons";
 
 export const CrudCard = ({ img, title, text }) => {
@@ -18,11 +19,9 @@ export const BarangCard = ({ img, id, name }) => {
         <p className="text-[14px] font-semibold text-neutral-500">{id}</p>
         <p className="font-bold text-[22px]">{name}</p>
         <div className="flex items-center justify-center w-full gap-2 mt-7">
-          <div className="basis-5/6">
-            <button className="bg-primary800 rounded-xl text-[18px] text-white px-4 py-2 font-semibold w-full hover:shadow-lg duration-300 hover:-translate-y-[2px]">
-                Detail
-            </button>
-          </div>
+          <Link to={`/barang/${id}`} className="bg-primary800 rounded-xl text-[18px] text-white px-4 py-2 font-semibold basis-5/6 hover:shadow-lg duration-300 hover:-translate-y-[2px] text-center">
+            Detail
+          </Link>
           <div className="basis-1/6 h-full">
             <DeleteButton />
           </div>
@@ -43,12 +42,7 @@ export const UbahCard = ({ img }) => {
   );
 };
 
-export const DetailCard = ({
-  id,
-  nama,
-  kategori,
-  masuk,
-}) => {
+export const DetailCard = ({ id, nama, kategori, masuk }) => {
   return (
     <div className="w-[752px] shadow-xl rounded-3xl">
       <p className="h3 font-bold bg-primary800 rounded-t-3xl text-white p-4 text-center">

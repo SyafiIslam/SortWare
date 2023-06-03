@@ -5,7 +5,7 @@ import Pegawai from "../../assets/pegawai.svg";
 
 const Jumbotron = ({ title }) => {
   return (
-    <div className="bg-primary700 flex justify-center items-center gap-96">
+    <div className="bg-primary700 flex justify-center items-center gap-20">
       <div className="flex items-end ml-72">
         <img src={Pegawai} alt="" />
         <img src={Box2} alt="" />

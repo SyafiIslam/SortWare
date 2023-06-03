@@ -40,7 +40,7 @@ export const DeleteButton = () => {
 
 export const AddButton = ({onClick}) => {
   return (
-    <button className="bg-primary900 rounded-full p-5 shadow-lg ">
+    <button onClick={onClick} className="bg-primary900 rounded-full p-5 shadow-md hover:shadow-xl hover:-translate-y-[2px] active:shadow-none active:translate-y-0 duration-300 ">
       <img src={Add} alt="" />
     </button>
   )

@@ -5,6 +5,8 @@ import AuthRoute from "./AuthRoute";
 import ProtectedRoute from "./ProtectedRoute";
 import HomePage from "../page/home/HomePage";
 import BarangPage from "../page/barang/BarangPage";
+import DetailBarang from "../page/barang_detail/DetailBarang";
+import AddBarang from "../page/barang_add/AddBarang";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -24,6 +26,8 @@ const MainRoute = () => {
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/barang" element={<BarangPage />} />
+          <Route path="/barang/:id" element={<DetailBarang />} />
+          <Route path="/add_barang" element={<AddBarang />} />
         </Route>
 
         <Route element={<AuthRoute />}>

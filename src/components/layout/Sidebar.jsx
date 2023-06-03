@@ -7,13 +7,19 @@ import Logout from "../../assets/logout.svg";
 import { Link } from "react-router-dom";
 import { removeToken } from "../../api/Api";
 
-const Sidebar = () => {
+const Sidebar = ({toggle, setToggle}) => {
 
   const [loc, setLoc]= useState('barang')
 
-  useEffect(() => {
-    setLoc('barang')
-  }, [])
+  const laporanHandler = () => {
+
+    if (loc === 'laporan') {
+      setLoc('barang')
+    } else {
+      setLoc('laporan')
+    setToggle(true)
+    }
+  }
 
   return (
     <div className="w-[516px] bg-primary800 z-50 py-14 px-16 -mt-44">
@@ -33,8 +39,8 @@ const Sidebar = () => {
             </figure>
           </Link>
 
-          <Link onClick={() => {setLoc('barang')}}>
-            <figure className={`flex items-center px-4 gap-2 py-4 rounded-xl h-fit hover:bg-primary700 ${loc === 'barang' && 'bg-primary700'} duration-300`}>
+          <Link to='/barang' onClick={() => {setLoc('barang')}}>
+            <figure className={`flex items-center px-4 gap-2 py-4 rounded-xl h-fit hover:bg-primary700 bg-primary700 duration-300`}>
               <img src={Barang} alt="" />
               <figcaption className="h6 font-semibold text-white">
                 Barang
@@ -42,11 +48,11 @@ const Sidebar = () => {
             </figure>
           </Link>
 
-          <Link onClick={() => {setLoc('laporan')}} >
-            <figure className={`flex items-center px-4 -ml-1 gap-2 py-4 rounded-xl h-fit hover:bg-primary700 ${loc === 'laporan' && 'bg-primary700'} duration-300`}>
+          <Link onClick={() => laporanHandler()} >
+            <figure className={`flex items-center px-4 -ml-1 gap-2 py-4 rounded-xl h-fit hover:bg-primary700 duration-300`}>
               <img src={Notif} alt="" />
               <figcaption className="h6 font-semibold text-white">
-                Pelaporan Barang
+                Pelaporan Barang  
               </figcaption>
             </figure>
           </Link>

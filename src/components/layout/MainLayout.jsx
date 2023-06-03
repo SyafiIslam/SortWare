@@ -2,14 +2,14 @@ import React from 'react'
 import Jumbotron from './Jumbotron'
 import Sidebar from './Sidebar'
 
-const MainLayout = ({children ,title}) => {
+const MainLayout = (props) => {
   return (
     <div className='relative'>
-      <Jumbotron title={title} />
+      <Jumbotron title={props.title} />
       
       <div className='flex min-h-screen'>
-        <Sidebar />
-        {children}
+        <Sidebar toggle={props.toggle} setToggle={props.setToggle} />
+        {props.children}
       </div>
 
     </div>
