@@ -34,7 +34,7 @@ export const AddBarangForm = ({ title }) => {
       })
       popupHandler()
       
-    }, 2500);
+    }, 1500);
 
   };
 
