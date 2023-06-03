@@ -7,6 +7,7 @@ export const Input = ({
   img,
   img2,
   onClick,
+  value,
 }) => {
   return (
     <div className="relative">
@@ -16,6 +17,7 @@ export const Input = ({
         type={type}
         onChange={onChange}
         placeholder={placeholder}
+        value={value}
       />
       <img
         className={`${

@@ -1,7 +1,8 @@
 import Warning from "../../assets/warning.svg";
 import Avatar from "../../assets/avatar.svg";
 import Success from "../../assets/success.svg";
-import { Button, OutlinedButton } from "../button/Buttons";
+import { OutlinedButton } from "../button/Buttons";
+import { Link } from "react-router-dom";
 
 export const HapusPopup = () => {
   return (
@@ -59,15 +60,15 @@ export const LaporanPopup = () => {
 
 export const SuccessPopup = () => {
   return (
-    <div className="flex flex-col items-center gap-4 rounded-3xl shadow-xl max-w-[567px] py-8 px-14">
+    <div className="flex flex-col items-center gap-4 bg-white rounded-3xl shadow-xl max-w-[567px] py-8 px-14">
       <img className="w-1/2" src={Success} alt="" />
       <p className="font-semibold h5 text-neutral-900 text-center">
 				DATA BERHASIL DISIMPAN
       </p>
       <div className="flex w-full gap-8 items-center">
-				<Button>
+				<Link className="bg-primary800 rounded-3xl text-[18px] text-white px-4 py-4 font-semibold w-full hover:shadow-lg duration-300 hover:-translate-y-[2px] text-center" to={`/barang`}>
 					Kembali
-				</Button>
+				</Link>
       </div>
     </div>
   );

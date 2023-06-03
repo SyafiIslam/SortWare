@@ -2,13 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import MainLayout from "../../components/layout/MainLayout";
 import { DetailCard, UbahCard } from "../../components/card/Card";
-import { barang } from "../../data/Barang";
 import { LaporanPopup } from "../../components/popup/Popup";
+import { getBarang } from "../../api/Api";
+import Spinner from "../../assets/loading.svg";
 
 const DetailBarang = () => {
   let params = useParams();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
   const [toggle, setToggle] = useState(false);
+  const [load, setLoad] = useState(true);
+
   let menuRef = useRef();
 
   const onClose = (e) => {
@@ -17,42 +20,56 @@ const DetailBarang = () => {
     }
   };
 
-  const getBarang = () => {
-    barang.map((barang) => {
-      if (barang.id == params.id) {
-        return setData([barang]);
-      }
-    });
+  const getData = async () => {
+    let mdata = [];
+    try {
+      mdata = await getBarang();
+      mdata.map((barang) => {
+        if (barang.id === params.id) {
+          setData(barang);
+        }
+      });
+      setLoad(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
-    getBarang();
+    getData();
     addEventListener("mousedown", onClose);
   }, []);
+
   return (
-    <MainLayout title="Detail Barang" toggle={toggle} setToggle={setToggle}>
-      <div className="p-14 mt-20">
-        {data.map((barang) => {
-          return (
-            <div key={barang.id} className="flex gap-10">
-              <UbahCard img={`../${barang.foto}`} />
+    <div>
+      {load ? (
+        <MainLayout title="Detail Barang" toggle={toggle} setToggle={setToggle}>
+          <div className="p-14 flex justify-center items-center w-full">
+            <img className="animate-spin w-40" src={Spinner} alt="" />
+          </div>
+        </MainLayout>
+      ) : (
+        <MainLayout title="Detail Barang" toggle={toggle} setToggle={setToggle}>
+          <div className="p-14 mt-20">
+            <div key={data.id} className="flex gap-10">
+              <UbahCard img={data.foto} />
               <DetailCard
-                id={barang.id}
-                nama={barang.nama}
-                kategori={barang.kategori}
-                masuk={barang.masuk}
+                id={data.id}
+                nama={data.nama}
+                kategori={data.kategori}
+                masuk={data.tanggal_masuk}
               />
             </div>
-          );
-        })}
-        <div
-          ref={menuRef}
-          className={`${toggle ? "fixed" : "hidden"} top-72 left-[700px]`}
-        >
-          <LaporanPopup />
-        </div>
-      </div>
-    </MainLayout>
+            <div
+              ref={menuRef}
+              className={`${toggle ? "fixed" : "hidden"} top-72 left-[700px]`}
+            >
+              <LaporanPopup />
+            </div>
+          </div>
+        </MainLayout>
+      )}
+    </div>
   );
 };
 

@@ -14,7 +14,7 @@ export const CrudCard = ({ img, title, text }) => {
 export const BarangCard = ({ img, id, name }) => {
   return (
     <div key={id}>
-      <img src={img} alt="" />
+      <img className="w-[300px] aspect-video object-contain" src={img} alt="" />
       <div className="max-w-[300px] flex flex-col rounded-2xl shadow-xl p-4">
         <p className="text-[14px] font-semibold text-neutral-500">{id}</p>
         <p className="font-bold text-[22px]">{name}</p>
