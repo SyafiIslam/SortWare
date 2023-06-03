@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Auth, db, storage } from "../Firebase";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs, deleteDoc, doc, setDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { uid } from "uid";
 
@@ -27,13 +27,23 @@ export const removeToken = () => {
 };
 
 export const addData = async (data, file) => {
-  await addDoc(collection(db, "barang"), {
-    id: uid(),
+
+  const newCityRef = doc(collection(db, "barang"));
+  await setDoc(newCityRef, {
+    id: newCityRef.id,
     nama: data.nama,
     kategori: data.kategori,
     tanggal_masuk: data.tanggal_masuk,
     foto: file
-  })
+  });
+
+  // await addDoc(collection(db, "barang"), {
+  //   id: uid(),
+  //   nama: data.nama,
+  //   kategori: data.kategori,
+  //   tanggal_masuk: data.tanggal_masuk,
+  //   foto: file
+  // })
 };
 
 export const uploadFoto = (barang, foto) => {
@@ -75,11 +85,16 @@ export const getBarang = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, "barang"));
     querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
       barang.push(doc.data())
+      console.log(doc);
     })
   } catch (error) {
     console.log(error)
   }
   return barang
+};
+
+export const deleteBarang = async (id) => {
+  await deleteDoc(doc(db, "barang", id));
+  window.location.reload()
 };

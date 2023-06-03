@@ -22,7 +22,7 @@ const HomePage = () => {
               dalam menyortir dan mengudentifikasi barang agar sesuai standar
               dan SOP gudang.
             </p>
-            <Link to='/barang' className="w-1/3">
+            <Link to='/barang' className="w-1/3 mt-5">
               <Button>Sorting Sekarang</Button>
             </Link>
           </div>

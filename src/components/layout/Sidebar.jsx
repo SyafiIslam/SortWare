@@ -31,7 +31,7 @@ const Sidebar = ({toggle, setToggle}) => {
 
         <div className="flex flex-col mt-20 gap-5">
           <Link to="/">
-            <figure className="flex items-center px-4 justify-start gap-2 h-fit py-4  rounded-xl hover:bg-primary700 duration-300">
+            <figure className="flex items-center px-4 justify-start gap-2 h-fit py-4 rounded-xl hover:bg-primary700 duration-300">
               <img src={Beranda} alt="" />
               <figcaption className="h6 font-semibold text-white">
                 Beranda

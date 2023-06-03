@@ -14,9 +14,9 @@ export const Button = ({
   );
 };
 
-export const OutlinedButton = ({ children = "Button" }) => {
+export const OutlinedButton = ({ children = "Button", onClick }) => {
   return (
-    <button className="w-full border-2 border-primary800 rounded-xl px-4 py-2 font-semibold text-primary800 duration-300 hover:-translate-y-[2px]">
+    <button onClick={onClick} className="w-full border-2 border-primary800 rounded-xl px-4 py-2 font-semibold text-primary800 duration-300 hover:-translate-y-[2px]">
       {children}
     </button>
   );
@@ -30,9 +30,9 @@ export const NavButton = ({ children = "Button", onClick }) => {
   );
 };
 
-export const DeleteButton = () => {
+export const DeleteButton = ({onClick}) => {
   return (
-    <button className="bg-err500 px-3 py-3 rounded-xl w-full h-full flex justify-center hover:shadow-lg duration-300 hover:-translate-y-[2px]">
+    <button onClick={onClick} className="bg-err500 px-3 py-3 rounded-xl w-full h-full flex justify-center hover:shadow-lg duration-300 hover:-translate-y-[2px]">
       <img className="object-contain" src={Trash} alt="" />
     </button>
   );

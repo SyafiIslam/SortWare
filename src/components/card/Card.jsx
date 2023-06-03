@@ -11,7 +11,7 @@ export const CrudCard = ({ img, title, text }) => {
   );
 };
 
-export const BarangCard = ({ img, id, name }) => {
+export const BarangCard = ({ img, id, name, setDel, setId }) => {
   return (
     <div key={id}>
       <img className="w-[300px] aspect-video object-contain" src={img} alt="" />
@@ -23,7 +23,10 @@ export const BarangCard = ({ img, id, name }) => {
             Detail
           </Link>
           <div className="basis-1/6 h-full">
-            <DeleteButton />
+            <DeleteButton onClick={() => {
+              setId(id)
+              setDel(true)
+            }} />
           </div>
         </div>
       </div>

@@ -3,20 +3,27 @@ import Avatar from "../../assets/avatar.svg";
 import Success from "../../assets/success.svg";
 import { OutlinedButton } from "../button/Buttons";
 import { Link } from "react-router-dom";
+import { deleteBarang } from "../../api/Api";
 
-export const HapusPopup = () => {
+export const HapusPopup = ({ setDel, id }) => {
   return (
-    <div className="flex flex-col items-center gap-4 rounded-3xl shadow-xl max-w-[567px] py-4 px-14">
+    <div className="flex flex-col items-center gap-4 bg-white rounded-3xl shadow-xl max-w-[567px] py-4 px-14">
       <img className="w-1/4" src={Warning} alt="" />
       <p className="font-semibold h4 text-neutral-900 text-center max-w-xs">
-        Apakah anda yakin untuk menghapus?
+        Apakah anda yakin ingin menghapus?
       </p>
-      <div className="flex w-full gap-8 items-center">
-        <button className="basis-1/2 bg-err500 rounded-2xl px-4 py-3 text-[18px] font-semibold text-white hover:-translate-y-[2px] hover:shadow-lg duration-300">
+      <div className="flex w-full gap-8 items-center my-4">
+        <button
+          onClick={() => {
+            deleteBarang(id)
+            .then(() => setDel(false))
+          }}
+          className="basis-1/2 bg-err500 rounded-2xl px-4 py-3 text-[18px] font-semibold text-white hover:-translate-y-[2px] hover:shadow-lg duration-300"
+        >
           Hapus
         </button>
         <div className="basis-1/2">
-          <OutlinedButton>Hapus</OutlinedButton>
+          <OutlinedButton onClick={() => setDel(false)}>Batal</OutlinedButton>
         </div>
       </div>
     </div>
@@ -42,7 +49,7 @@ export const LaporanPopup = () => {
         </div>
       </div>
 
-			<div className="flex py-4 px-14 gap-7">
+      <div className="flex py-4 px-14 gap-7 mb-10">
         <img src={Avatar} alt="" />
 
         <div className="flex flex-col w-full gap-2">
@@ -63,12 +70,15 @@ export const SuccessPopup = () => {
     <div className="flex flex-col items-center gap-4 bg-white rounded-3xl shadow-xl max-w-[567px] py-8 px-14">
       <img className="w-1/2" src={Success} alt="" />
       <p className="font-semibold h5 text-neutral-900 text-center">
-				DATA BERHASIL DISIMPAN
+        DATA BERHASIL DISIMPAN
       </p>
       <div className="flex w-full gap-8 items-center">
-				<Link className="bg-primary800 rounded-3xl text-[18px] text-white px-4 py-4 font-semibold w-full hover:shadow-lg duration-300 hover:-translate-y-[2px] text-center" to={`/barang`}>
-					Kembali
-				</Link>
+        <Link
+          className="bg-primary800 rounded-3xl text-[18px] text-white px-4 py-4 font-semibold w-full hover:shadow-lg duration-300 hover:-translate-y-[2px] text-center"
+          to={`/barang`}
+        >
+          Kembali
+        </Link>
       </div>
     </div>
   );
