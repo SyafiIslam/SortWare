@@ -35,7 +35,7 @@ const BarangPage = () => {
   useEffect(() => {
     addEventListener("mousedown", onClose);
     getData();
-  }, []);
+  }, [data]);
 
   return (
     <div>
@@ -55,7 +55,6 @@ const BarangPage = () => {
           </div>
           <div className="flex justify-start w-full flex-wrap p-14 mt-20 gap-10">
             {data.map((data) => {
-              console.log(data);
               return (
                 <BarangCard
                   key={data.id}

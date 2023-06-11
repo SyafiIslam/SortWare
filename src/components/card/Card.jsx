@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button, DeleteButton } from "../button/Buttons";
+import { updateData } from "../../api/Api";
 
 export const CrudCard = ({ img, title, text }) => {
   return (
@@ -19,14 +20,19 @@ export const BarangCard = ({ img, id, name, setDel, setId }) => {
         <p className="text-[14px] font-semibold text-neutral-500">{id}</p>
         <p className="font-bold text-[22px]">{name}</p>
         <div className="flex items-center justify-center w-full gap-2 mt-7">
-          <Link to={`/barang/${id}`} className="bg-primary800 rounded-xl text-[18px] text-white px-4 py-2 font-semibold basis-5/6 hover:shadow-lg duration-300 hover:-translate-y-[2px] text-center">
+          <Link
+            to={`/barang/${id}`}
+            className="bg-primary800 rounded-xl text-[18px] text-white px-4 py-2 font-semibold basis-5/6 hover:shadow-lg duration-300 hover:-translate-y-[2px] text-center"
+          >
             Detail
           </Link>
           <div className="basis-1/6 h-full">
-            <DeleteButton onClick={() => {
-              setId(id)
-              setDel(true)
-            }} />
+            <DeleteButton
+              onClick={() => {
+                setId(id);
+                setDel(true);
+              }}
+            />
           </div>
         </div>
       </div>
@@ -34,12 +40,16 @@ export const BarangCard = ({ img, id, name, setDel, setId }) => {
   );
 };
 
-export const UbahCard = ({ img }) => {
+export const UbahCard = ({ img, data }) => {
   return (
     <div className="w-[480px]">
       <img className="rounded-t-3xl object-fill w-full" src={img} alt="" />
       <div className="rounded-3xl shadow-xl w-full] px-8 py-10">
-        <Button>Ubah Data</Button>
+        <Link to={`/update_barang/${data.id}`}>
+          <Button>
+            Ubah data
+          </Button>
+        </Link>
       </div>
     </div>
   );

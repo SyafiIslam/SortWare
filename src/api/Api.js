@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Auth, db, storage } from "../Firebase";
-import { addDoc, collection, getDocs, deleteDoc, doc, setDoc } from "firebase/firestore";
+import { addDoc, collection, getDocs, deleteDoc, doc, setDoc, updateDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { uid } from "uid";
 
@@ -28,23 +28,28 @@ export const removeToken = () => {
 
 export const addData = async (data, file) => {
 
-  const newCityRef = doc(collection(db, "barang"));
-  await setDoc(newCityRef, {
-    id: newCityRef.id,
+  const newBarang = doc(collection(db, "barang"));
+  await setDoc(newBarang, {
+    id: newBarang.id,
     nama: data.nama,
     kategori: data.kategori,
     tanggal_masuk: data.tanggal_masuk,
     foto: file
   });
-
-  // await addDoc(collection(db, "barang"), {
-  //   id: uid(),
-  //   nama: data.nama,
-  //   kategori: data.kategori,
-  //   tanggal_masuk: data.tanggal_masuk,
-  //   foto: file
-  // })
 };
+
+export const updateData = async(data, file) => {
+  const barang = doc(db, "barang", data.id);
+  console.log(data.id);
+
+  await updateDoc(barang, {
+    nama: data.nama,
+    kategori: data.kategori,
+    tanggal_masuk: data.tanggal_masuk,
+    foto: file
+  })
+};
+
 
 export const uploadFoto = (barang, foto) => {
   const storageRef = ref(storage, foto.name);
@@ -73,7 +78,11 @@ export const uploadFoto = (barang, foto) => {
 
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
         console.log('File available at', downloadURL);
-        addData(barang, downloadURL)
+        if(barang.id) {
+          updateData(barang, downloadURL)
+        }else {
+          addData(barang, downloadURL)
+        }
       });
     }
   );
@@ -86,7 +95,6 @@ export const getBarang = async () => {
     const querySnapshot = await getDocs(collection(db, "barang"));
     querySnapshot.forEach((doc) => {
       barang.push(doc.data())
-      console.log(doc);
     })
   } catch (error) {
     console.log(error)

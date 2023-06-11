@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import MainLayout from "../../components/layout/MainLayout";
-import { AddBarangForm } from "../../components/form/Form";
+import { AddForm } from "../../components/form/Form";
 import { LaporanPopup } from "../../components/popup/Popup";
 
 const AddBarang = () => {
@@ -13,13 +13,13 @@ const AddBarang = () => {
     }
   }
   useEffect(() => {
-    addEventListener("mousedown", onClose);
+    // addEventListener("mousedown", onClose);
   });
 
   return (
     <MainLayout title="Tambah Barang" toggle={toggle} setToggle={setToggle}>
-      <div className="flex justify-center items-center w-full" toggle={toggle} setToggle={setToggle}>
-        <AddBarangForm title={`Tambah Barang`} />  
+      <div className="flex justify-center items-center w-full py-20" toggle={toggle} setToggle={setToggle}>
+        <AddForm />  
       </div>
 
       <div ref={menuRef} className={`${toggle ? 'fixed' : 'hidden'} top-72 left-[700px]`}>

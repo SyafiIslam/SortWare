@@ -83,3 +83,21 @@ export const SuccessPopup = () => {
     </div>
   );
 };
+
+export const GagalPopup = ({setGagal}) => {
+  <div className="flex flex-col items-center gap-4 bg-white rounded-3xl shadow-xl max-w-[567px] py-8 px-14">
+      <img className="w-1/2" src={Warning} alt="" />
+      <p className="font-semibold h5 text-neutral-900 text-center">
+        DATA TIDAK BERHASIL DISIMPAN
+      </p>
+      <div className="flex w-full gap-8 items-center">
+        <button
+          onClick={() => setGagal(true)}
+          className="bg-primary800 rounded-3xl text-[18px] text-white px-4 py-4 font-semibold w-full hover:shadow-lg duration-300 hover:-translate-y-[2px] text-center"
+          to={`/barang`}
+        >
+          OK
+        </button>
+      </div>
+    </div>
+};
