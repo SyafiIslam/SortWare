@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../button/Buttons";
 import { Input } from "../input/Input";
-import { addData, uploadFoto } from "../../api/Api";
+import { addData, getBarang, uploadFoto } from "../../api/Api";
 import { GagalPopup, SuccessPopup } from "../popup/Popup";
 import { useParams } from "react-router-dom";
+import {Kategori} from "../../data/Kategori"
 
 export const AddForm = () => {
   const [file, setFile] = useState();
@@ -38,7 +39,7 @@ export const AddForm = () => {
         popupHandler();
       }, 1500);
     } catch (error) {
-      setGagal(true)
+      setGagal(true);
     }
   };
 
@@ -88,13 +89,21 @@ export const AddForm = () => {
 
           <div className="flex flex-col px-32 gap-2">
             <label className="font-semibold text-[22px]">Kategori</label>
-            <Input
+            <select
               onChange={(e) => {
-                setBarang({ ...barang, kategori: e.target.value });
+                setBarang({ ...barang, kategori: e.target.value })
               }}
-              placeholder={`Kategori`}
               value={barang.kategori}
-            />
+              className="border-2 border-primary900 rounded-xl text-[18px] outline-none font-[500] text-neutral-900 px-12 py-4 w-full"
+            >
+              {Kategori.map((data) => {
+                return (
+                  <option value={data}>
+                    {data}
+                  </option>
+                )
+              })}
+            </select>
           </div>
 
           <div className="flex flex-col px-32 gap-2">
@@ -110,7 +119,9 @@ export const AddForm = () => {
           </div>
 
           <div className="flex flex-col px-32 mt-20">
-            <Button />
+            <Button>
+              Submit
+            </Button>
           </div>
         </div>
       </form>
@@ -126,8 +137,8 @@ export const AddForm = () => {
   );
 };
 
-export const EditForm = ({ title}) => {
-  const param= useParams()
+export const EditForm = ({ title }) => {
+  const param = useParams();
   const [file, setFile] = useState();
   const [barang, setBarang] = useState({
     id: param.id,
@@ -137,7 +148,6 @@ export const EditForm = ({ title}) => {
   });
   const [done, setDone] = useState(false);
   const [gagal, setGagal] = useState(false);
-
 
   const handleFile = (file) => {
     setFile(file);
@@ -162,9 +172,28 @@ export const EditForm = ({ title}) => {
         popupHandler();
       }, 1500);
     } catch (error) {
-      setGagal(true)
+      setGagal(true);
     }
   };
+
+  const getData = async () => {
+    let mdata = [];
+    try {
+      mdata = await getBarang();
+      mdata.map((barang) => {
+        if (barang.id === param.id) {
+          setBarang(barang);
+        }
+      });
+      setLoad(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <div>
@@ -212,13 +241,21 @@ export const EditForm = ({ title}) => {
 
           <div className="flex flex-col px-32 gap-2">
             <label className="font-semibold text-[22px]">Kategori</label>
-            <Input
+            <select
               onChange={(e) => {
-                setBarang({ ...barang, kategori: e.target.value });
+                setBarang({ ...barang, kategori: e.target.value })
               }}
-              placeholder={`Kategori`}
               value={barang.kategori}
-            />
+              className="border-2 border-primary900 rounded-xl text-[18px] outline-none font-[500] text-neutral-900 px-12 py-4 w-full"
+            >
+              {Kategori.map((data) => {
+                return (
+                  <option value={data}>
+                    {data}
+                  </option>
+                )
+              })}
+            </select>
           </div>
 
           <div className="flex flex-col px-32 gap-2">
@@ -234,7 +271,9 @@ export const EditForm = ({ title}) => {
           </div>
 
           <div className="flex flex-col px-32 mt-20">
-            <Button />
+            <Button>
+              Save
+            </Button>
           </div>
         </div>
       </form>
@@ -249,4 +288,3 @@ export const EditForm = ({ title}) => {
     </div>
   );
 };
-

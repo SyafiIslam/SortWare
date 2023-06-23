@@ -1,29 +1,29 @@
 export const barang= [
   {
-    "nama": "Indomie Goreng",
+    "nama": "A",
     "id": 1,
-    "kategori": "Makanan",
+    "kategori": "A",
     "foto": "src/assets/indomie.svg",
     "masuk": "14/07/2023"
   },
   {
-    "nama": "Indomie Goreng",
+    "nama": "B",
     "id": 2,
-    "kategori": "Makanan",
+    "kategori": "B",
     "foto": "src/assets/indomie.svg",
     "masuk": "14/07/2023"
   },
   {
-    "nama": "Indomie Goreng",
+    "nama": "C",
     "id": 3,
-    "kategori": "Makanan",
+    "kategori": "C",
     "foto": "src/assets/indomie.svg",
     "masuk": "14/07/2023"
   },
   {
-    "nama": "Indomie Goreng",
+    "nama": "D",
     "id": 4,
-    "kategori": "Makanan",
+    "kategori": "D",
     "foto": "src/assets/indomie.svg",
     "masuk": "14/07/2023"
   }

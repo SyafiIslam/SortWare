@@ -53,6 +53,7 @@ const DetailBarang = () => {
           <div className="p-14 mt-20">
             <div key={data.id} className="flex gap-10">
               <UbahCard img={data.foto} data={data} />
+              
               <DetailCard
                 id={data.id}
                 nama={data.nama}

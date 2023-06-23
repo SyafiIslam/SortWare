@@ -8,7 +8,7 @@ const UpdateBarang = () => {
   let params = useParams();
 
   return (
-    <MainLayout title="Tambah Barang">
+    <MainLayout title="Edit Barang">
       <div className="flex justify-center items-center w-full py-20">
         <EditForm title={`Edit Barang`} />  
       </div>

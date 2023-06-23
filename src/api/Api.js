@@ -104,5 +104,5 @@ export const getBarang = async () => {
 
 export const deleteBarang = async (id) => {
   await deleteDoc(doc(db, "barang", id));
-  window.location.reload()
+  window.location.reload( )
 };
